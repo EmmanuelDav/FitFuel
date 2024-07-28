@@ -28,10 +28,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.cyberiyke.deficity.nav.NavItem
+import com.cyberiyke.deficity.ui.composables.tabs.EventScreen
 import com.cyberiyke.deficity.ui.composables.tabs.HomeScreen
-import com.cyberiyke.deficity.ui.composables.tabs.ListScreen
-import com.cyberiyke.deficity.ui.composables.tabs.ProfileScreen
-import com.cyberiyke.deficity.ui.composables.tabs.SearchScreen
+import com.cyberiyke.deficity.ui.composables.tabs.NewsScreen
+import com.cyberiyke.deficity.ui.composables.tabs.SettingScreen
 import com.cyberiyke.deficity.ui.theme.DefiCityTheme
 
 class MainActivity : ComponentActivity() {
@@ -65,15 +65,15 @@ fun MainScreen(navController: NavHostController) {
 fun NavigationScreens(navController: NavHostController, modifier: Modifier) {
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { HomeScreen() }
-        composable(NavItem.Search.path) { SearchScreen() }
-        composable(NavItem.List.path) { ListScreen() }
-        composable(NavItem.Profile.path) { ProfileScreen() }
+        composable(NavItem.Events.path) { EventScreen() }
+        composable(NavItem.News.path) { NewsScreen() }
+        composable(NavItem.Settings.path) { SettingScreen() }
     }
 }
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
-    val navItems = listOf(NavItem.Home, NavItem.Search, NavItem.List, NavItem.Profile)
+    val navItems = listOf(NavItem.Home, NavItem.Events, NavItem.News, NavItem.Settings)
     var selectedItem by rememberSaveable { mutableStateOf(0) }
 
     NavigationBar {

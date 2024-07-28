@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
  * Composable function that represents the home screen of the application.
  */
 @Composable
-fun ListScreen() {
+fun EventScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
             text = "List",

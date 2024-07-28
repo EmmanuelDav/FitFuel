@@ -8,17 +8,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
-import com.cyberiyke.deficity.R
 
 /**
  * Composable function that represents the home screen of the application.
  */
 @Composable
-fun ProfileScreen() {
+fun SettingScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
-            text = "Profile",
+            text = "Search",
             style = typography.titleLarge,
             color = Color.Cyan
         )
