@@ -17,7 +17,7 @@ fun EventScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
             text = "List",
-            style = typography.titleLarge,
+            style = typography.bodyLarge,
             color = Color.Cyan
         )
     }
