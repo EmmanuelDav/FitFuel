@@ -1,14 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.jetbrains.kotlin.kapt)
 }
 
 android {
-    namespace = "com.cyberiyke.deficity"
+    namespace = "com.cyberiyke.fitfuel"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.cyberiyke.deficity"
+        applicationId = "com.cyberiyke.fitfuel"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -55,6 +57,18 @@ dependencies {
     implementation  (libs.androidx.navigation.ui.ktx)
     implementation (libs.retrofit)
     implementation( libs.androidx.compose.material)
+
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.paging)
+
+    //hilt
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
 
     implementation  (libs.converter.gson)
     implementation (libs.glide)

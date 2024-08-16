@@ -1,4 +1,4 @@
-package com.cyberiyke.deficity.ui.composables.tabs
+package com.cyberiyke.fitfuel.ui.composables.tabs
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,10 +13,10 @@ import androidx.compose.ui.graphics.Color
  * Composable function that represents the home screen of the application.
  */
 @Composable
-fun NewsScreen() {
+fun HomeScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
-            text = "Profile",
+            text = "HOME",
             style = typography.titleLarge,
             color = Color.Cyan
         )

@@ -1,4 +1,4 @@
-package com.cyberiyke.deficity.ui.composables.tabs
+package com.cyberiyke.fitfuel.ui.composables.tabs
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,11 +13,11 @@ import androidx.compose.ui.graphics.Color
  * Composable function that represents the home screen of the application.
  */
 @Composable
-fun SettingScreen() {
+fun EventScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
-            text = "Search",
-            style = typography.titleLarge,
+            text = "List",
+            style = typography.bodyLarge,
             color = Color.Cyan
         )
     }

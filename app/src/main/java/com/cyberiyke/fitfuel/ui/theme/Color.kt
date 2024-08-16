@@ -1,4 +1,4 @@
-package com.cyberiyke.deficity.ui.theme
+package com.cyberiyke.fitfuel.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val md_theme_light_primary = Color(0xFF825500)

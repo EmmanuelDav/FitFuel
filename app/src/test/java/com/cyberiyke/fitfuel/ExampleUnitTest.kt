@@ -1,4 +1,4 @@
-package com.cyberiyke.deficity
+package com.cyberiyke.fitfuel
 
 import org.junit.Test
 

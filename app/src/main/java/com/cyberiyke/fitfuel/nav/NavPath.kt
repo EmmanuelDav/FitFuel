@@ -1,4 +1,4 @@
-package com.cyberiyke.deficity.nav
+package com.cyberiyke.fitfuel.nav
 
 enum class NavPath {
     HOME, EVENTS,NEWS,SETTINGS

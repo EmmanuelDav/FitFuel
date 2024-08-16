@@ -1,4 +1,4 @@
-package com.cyberiyke.deficity.nav
+package com.cyberiyke.fitfuel.nav
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List

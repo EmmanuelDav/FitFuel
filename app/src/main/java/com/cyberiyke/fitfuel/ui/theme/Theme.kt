@@ -1,4 +1,4 @@
-package com.cyberiyke.deficity.ui.theme
+package com.cyberiyke.fitfuel.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
