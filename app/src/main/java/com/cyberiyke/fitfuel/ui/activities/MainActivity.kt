@@ -86,9 +86,7 @@ fun MainScreen(navController: NavHostController) {
         }
     }, floatingActionButtonPosition = FabPosition.Center, content = { paddingValues ->
         NavigationScreens(
-            navController = navController,
-            modifier = Modifier.padding(paddingValues)
-        )
+            navController = navController)
 
     })
 }
@@ -113,7 +111,7 @@ private fun BottomBar(
 }
 
 @Composable
-fun NavigationScreens(navController: NavHostController, modifier: Modifier) {
+fun NavigationScreens(navController: NavHostController) {
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { HomeScreen() }
         composable(NavItem.Events.path) { EventScreen() }

@@ -1,9 +1,14 @@
 package com.cyberiyke.fitfuel.repository
 
+import androidx.core.net.toUri
 import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
-import java.util.prefs.Preferences
+import com.cyberiyke.fitfuel.data.model.Gender
+import com.cyberiyke.fitfuel.data.model.User
+import kotlinx.coroutines.flow.map
+import androidx.datastore.preferences.core.Preferences
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -20,5 +25,27 @@ class UserRepository @Inject constructor(private val dataStore: DataStore<Prefer
 
     }
 
-    val user = 
+    val user = dataStore.data.map {
+        val dbImgUri = it[USER_IMG_URI]
+        User(
+            name = it[USER_NAME] ?: "",
+            gender = Gender.valueOf(it[USER_GENDER] ?: Gender.MALE.name),
+            weightInKG = it[USER_WEIGHT_IN_KG] ?: 0.0f,
+            weeklyGoadInKm = it[USER_WEEKLY_GOAL_IN_KM] ?: 0.0f,
+            imageUri = if (dbImgUri.isNullOrBlank()) null else dbImgUri.toUri()
+        )
+    }
+
+    val doesUserExist = dataStore.data.map {
+        it[USER_NAME] != null
+    }
+
+    suspend fun updateUser(user: User) = dataStore.edit {
+        it[USER_NAME] = user.name
+        it[USER_GENDER] = user.gender.name
+        it[USER_WEEKLY_GOAL_IN_KM] = user.weeklyGoadInKm
+        it[USER_WEIGHT_IN_KG] = user.weightInKG
+        it[USER_IMG_URI] = user.imageUri?.toString() ?: ""
+    }
+
 }

@@ -1,6 +1,7 @@
-package com.cyberiyke.fitfuel.data.db.dao
+package com.cyberiyke.fitfuel.data.db
 
 import androidx.paging.PagingSource
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -9,8 +10,8 @@ import com.cyberiyke.fitfuel.data.model.Run
 import kotlinx.coroutines.flow.Flow
 import java.util.Date
 
+@Dao
 interface RunDoa {
-
 
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     suspend fun insertRun(run : Run)
@@ -19,10 +20,10 @@ interface RunDoa {
     suspend fun deleteRun(run: Run)
 
     @Query("SELECT * FROM running_table ORDER BY timestamp DESC")
-    suspend fun getAllRunSortedByDat() :PagingSource<Int,  Run>
+    fun getAllRunSortedByDat() :PagingSource<Int,  Run>
 
     @Query("SELECT * From running_table order by durationInMills DESC")
-    suspend fun  getAllRunSortedByDuration() : PagingSource<Int, Run>
+     fun  getAllRunSortedByDuration() : PagingSource<Int, Run>
 
     @Query("SELECT * FROM running_table ORDER BY caloriesBurnt DESC")
     fun getAllRunSortByCaloriesBurned(): PagingSource<Int, Run>
@@ -74,7 +75,6 @@ interface RunDoa {
                 "ORDER BY timestamp DESC"
     )
     fun getTotalAvgSpeed(fromDate: Date?, toDate: Date?): Flow<Float>
-
 
 
 }
