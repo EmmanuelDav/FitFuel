@@ -54,7 +54,7 @@ fun TopBarProfile(
     modifier: Modifier = Modifier,
     user: User,
     isEditMode: Boolean,
-    profileEditActions: ProfileEditAction
+    profileEditActions: ProfileEditAction?
 ) {
     Box(
         modifier = modifier
@@ -64,7 +64,7 @@ fun TopBarProfile(
         TopBarProfileContent(
             user = user,
             isEditMode = isEditMode,
-            profileEditActions = profileEditActions
+            profileEditActions = profileEditActions!!
         )
 
         AnimatedVisibility(
