@@ -9,6 +9,7 @@ junit = "4.13.2"
 room = "2.6.1"
 hilt = "2.49"
 datstore = "1.1.1"
+coil-compose = "2.4.0"
 
 
 hilt-navigation-compose = "1.0.0"
@@ -57,6 +58,9 @@ androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "ro
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+
+
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
 
 
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
