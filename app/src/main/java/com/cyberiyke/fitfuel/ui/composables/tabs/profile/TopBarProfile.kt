@@ -48,10 +48,6 @@ import androidx.compose.ui.unit.dp
 import com.cyberiyke.fitfuel.R
 import com.cyberiyke.fitfuel.data.model.User
 import com.cyberiyke.fitfuel.ui.composables.components.UserProfilePix
-import com.sdevprem.runtrack.R
-import com.sdevprem.runtrack.data.model.User
-import com.sdevprem.runtrack.ui.common.compose.component.UserProfilePic
-import com.sdevprem.runtrack.ui.common.extension.bottomBorder
 
 @Composable
 fun TopBarProfile(
@@ -99,7 +95,7 @@ fun TopBarProfile(
         ) {
             Icon(
                 imageVector = if (!isEditMode)
-                    ImageVector.vectorResource(id = R.drawable.ic_edit)
+                    ImageVector.vectorResource(id = R.drawable.baseline_edit_24)
                 else
                     Icons.Default.Done,
                 contentDescription = "Settings",
@@ -180,7 +176,7 @@ private fun TopBarProfileContent(
                         )
                 ) {
                     Icon(
-                        imageVector = ImageVector.vectorResource(id = R.drawable.ic_edit),
+                        imageVector = ImageVector.vectorResource(id = R.drawable.baseline_edit_24),
                         contentDescription = "Change Photo",
                         tint = MaterialTheme.colorScheme.onTertiaryContainer,
                         modifier = Modifier
@@ -211,8 +207,7 @@ private fun TopBarProfileContent(
                     .focusRequester(userNameFocusRequester)
                     .wrapContentHeight()
                     .width(200.dp)
-                    .padding(bottom = 4.dp)
-                    .bottomBorder(1.dp, MaterialTheme.colorScheme.onPrimary),
+                    .padding(bottom = 4.dp),
                 maxLines = 1,
                 singleLine = true,
                 cursorBrush = SolidColor(MaterialTheme.colorScheme.onPrimary)
