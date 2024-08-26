@@ -49,9 +49,9 @@ import com.cyberiyke.fitfuel.ui.composables.components.RunningStats
 
 @Preview(showBackground = true)
 @Composable
- fun ProfileScreen() {
+fun ProfileScreen() {
     Column(
-        modifier = Modifier.padding(bottom =  8.dp)
+        modifier = Modifier.padding(bottom = 8.dp)
     ) {
         TopBar()
         Column(
@@ -59,31 +59,60 @@ import com.cyberiyke.fitfuel.ui.composables.components.RunningStats
                 .verticalScroll(rememberScrollState())
                 .padding(top = 16.dp)
         ) {
-            ElevatedCard(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .padding(horizontal = 24.dp),
-                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
+            Column(
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.padding(horizontal = 16.dp)
             ) {
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    modifier = Modifier.padding(horizontal = 24.dp)
-                ) {
-                    SettingsItem(
-                        img = painterResource(id = R.drawable.running_man),
-                        title = "Personal Parameter"
-                    )
-                    SettingsItem(
-                        img = painterResource(id = R.drawable.stopwatch), title = "Achievements"
-                    )
-                    SettingsItem(
-                        img = painterResource(id = R.drawable.fire), title = "Settings"
-                    )
-                    SettingsItem(
-                        img = painterResource(id = R.drawable. baseline_male_24),
-                        title = "Our Contact",
-                    )
-                }
+
+                Text(
+                    text = "General".toUpperCase(), style = typography.titleMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold
+                    ), modifier = Modifier.padding(6.dp)
+                )
+
+                SettingsItem(
+                    img = painterResource(id = R.drawable.analytics),
+                    title = "Statistics"
+                )
+                SettingsItem(
+                    img = painterResource(id = R.drawable.success), title = "Achievements"
+                )
+
+                Text(
+                    text = "Nutritional Info".toUpperCase(), style = typography.titleMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold
+                    ), modifier = Modifier.padding(6.dp)
+                )
+
+                SettingsItem(
+                    img = painterResource(id = R.drawable.meal),
+                    title = "Meal Tracker",
+                )
+                SettingsItem(
+                    img = painterResource(id = R.drawable.calories),
+                    title = "Daily Caloric Intake",
+                )
+
+                Text(
+                    text = "Settings and Privacy".toUpperCase(), style = typography.titleMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold
+                    ), modifier = Modifier.padding(6.dp)
+                )
+
+                SettingsItem(
+                    img = painterResource(id = R.drawable.setting),
+                    title = "App Settings",
+                )
+
+                SettingsItem(
+                    img = painterResource(id = R.drawable.policy),
+                    title = "Private Policy",
+                )
+
+                SettingsItem(
+                    img = painterResource(id = R.drawable.contact),
+                    title = "Contact Us",
+                )
             }
         }
     }
@@ -102,17 +131,17 @@ private fun TopBar(
                 .offset(y = (-24).dp)
                 .background(
                     color = MaterialTheme.colorScheme.primary,
-                    shape = RoundedCornerShape(bottomEnd = 16.dp, bottomStart = 16.dp)
+                    shape = RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp)
                 )
         )
         Column(modifier = modifier.padding(horizontal = 24.dp)) {
             Spacer(modifier = Modifier.size(24.dp))
-            TopBarProfile(
-                modifier = Modifier.background(color = Color.Transparent),
-                user = User(),
-                isEditMode = true,
-                profileEditActions = null
-            )
+//            TopBarProfile(
+//                modifier = Modifier.background(color = Color.Transparent),
+//                user = User(),
+//                isEditMode = true,
+//                profileEditActions = null
+//            )
             Spacer(modifier = Modifier.size(32.dp))
             TotalProgressCard()
         }
@@ -124,12 +153,16 @@ private fun SettingsItem(
     modifier: Modifier = Modifier, img: Painter, title: String
 ) {
 
-    ElevatedCard(shape = RoundedCornerShape(5.dp), modifier = Modifier.padding(10.dp)) {
+    ElevatedCard(
+        shape = RoundedCornerShape(5.dp), modifier = Modifier
+            .padding(8.dp),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
+    ) {
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 24.dp),
+                .padding(vertical = 16.dp, horizontal = 5.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
@@ -217,7 +250,7 @@ private fun TotalProgressCard(modifier: Modifier = Modifier) {
                 modifier = Modifier,
                 painter = painterResource(id = R.drawable.stopwatch),
                 unit = "hr",
-                value = "20Km"
+                value = "Km"
             )
             Box(
                 modifier = Modifier

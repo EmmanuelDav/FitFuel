@@ -41,7 +41,10 @@ import com.cyberiyke.fitfuel.ui.composables.tabs.HomeScreen
 import com.cyberiyke.fitfuel.ui.composables.tabs.NewsScreen
 import com.cyberiyke.fitfuel.ui.composables.tabs.profile.ProfileScreen
 import com.cyberiyke.fitfuel.ui.theme.DefiCityTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
