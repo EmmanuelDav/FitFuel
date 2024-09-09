@@ -1,5 +1,6 @@
 package com.cyberiyke.fitfuel.ui.composables.tabs.profile
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -28,6 +29,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -59,12 +61,15 @@ fun ProfileScreen() {
     val viewModel: ProfileViewModel = hiltViewModel()
     val state by viewModel.profileScreenState.collectAsStateWithLifecycle()
 
-
+    LaunchedEffect(key1 = state.errorMsg) {
+        if (state.errorMsg.isNullOrBlank().not())
+            Toast.makeText(context, state.errorMsg.toString(), Toast.LENGTH_SHORT).show()
+    }
 
     Column(
         modifier = Modifier.padding(bottom = 8.dp)
     ) {
-        TopBar()
+        TopBar(state = state, profileEditAction = viewModel,)
         Column(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
@@ -131,6 +136,8 @@ fun ProfileScreen() {
 
 @Composable
 private fun TopBar(
+    state: ProfileScreenState,
+    profileEditAction: ProfileEditAction,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -147,14 +154,14 @@ private fun TopBar(
         )
         Column(modifier = modifier.padding(horizontal = 24.dp)) {
             Spacer(modifier = Modifier.size(24.dp))
-//            TopBarProfile(
-//                modifier = Modifier.background(color = Color.Transparent),
-//                user = User(),
-//                isEditMode = true,
-//                profileEditActions = null
-//            )
+            TopBarProfile(
+                modifier = Modifier.background(color = Color.Transparent),
+                user = state.user,
+                isEditMode = state.isEditMode,
+                profileEditActions = profileEditAction
+            )
             Spacer(modifier = Modifier.size(32.dp))
-            TotalProgressCard()
+            TotalProgressCard(state = state)
         }
     }
 }
@@ -165,13 +172,13 @@ private fun SettingsItem(
 ) {
 
     ElevatedCard(
-        shape = RoundedCornerShape(5.dp), modifier = Modifier
+        shape = RoundedCornerShape(5.dp), modifier = modifier
             .padding(8.dp),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
     ) {
 
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(vertical = 16.dp, horizontal = 5.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -202,12 +209,12 @@ private fun SettingsItem(
 
 
 @Composable
-private fun TotalProgressCard(modifier: Modifier = Modifier) {
+private fun TotalProgressCard(modifier: Modifier = Modifier, state: ProfileScreenState) {
     ElevatedCard(
-        modifier = Modifier, elevation = CardDefaults.elevatedCardElevation(defaultElevation = 8.dp)
+        modifier = modifier, elevation = CardDefaults.elevatedCardElevation(defaultElevation = 8.dp)
     ) {
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .padding(24.dp)
                 .fillMaxWidth()
         ) {
@@ -243,8 +250,8 @@ private fun TotalProgressCard(modifier: Modifier = Modifier) {
         ) {
             RunningStats(
                 painter = painterResource(id = R.drawable.running_man),
-                unit = "10",
-                value = "km",
+                unit = "km",
+                value = state.totalDistanceInKm.toString(),
                 modifier = Modifier
             )
             Box(
@@ -261,7 +268,7 @@ private fun TotalProgressCard(modifier: Modifier = Modifier) {
                 modifier = Modifier,
                 painter = painterResource(id = R.drawable.stopwatch),
                 unit = "hr",
-                value = "Km"
+                value = state.totalDurationInHr.toString()
             )
             Box(
                 modifier = Modifier
@@ -277,7 +284,7 @@ private fun TotalProgressCard(modifier: Modifier = Modifier) {
                 modifier = Modifier,
                 painter = painterResource(id = R.drawable.fire),
                 unit = "kcal",
-                value = "10"
+                value = state.totalCaloriesBurnt.toString()
             )
 
         }
