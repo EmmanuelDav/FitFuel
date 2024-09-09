@@ -59,7 +59,8 @@ dependencies {
     implementation(libs.androidx.compose.material)
 
     implementation(libs.androidx.room.runtime)
-   // implementation(libs.androidx.ui.desktop)
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
+    // implementation(libs.androidx.ui.desktop)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
