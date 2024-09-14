@@ -47,20 +47,20 @@ class OnBoardingScreenViewModel @Inject constructor(
     }
 
     override fun updateWeight(weightInKg: Float) {
-        _user.update{ it.copy(weightInKG = weightInKg) }
+        _user.update { it.copy(weightInKG = weightInKg) }
     }
 
     override fun updateWeeklyGoal(weeklyGoalInKm: Float) {
         _user.update { it.copy(weeklyGoadInKm = weeklyGoalInKm) }
     }
 
-    fun saveUser(navigate: () -> Unit){
-       if(!user.value.isUserValid()){
-       _errorMessage.value = "Enter Valid Input"
-       }
+    fun saveUser(navigate: () -> Unit) {
+        if (!user.value.isUserValid()) {
+            _errorMessage.value = "Enter Valid Input"
+        }
 
         viewModelScope.launch {
-userRepository.updateUser(user.value)
+            userRepository.updateUser(user.value)
             navigate()
         }
     }
